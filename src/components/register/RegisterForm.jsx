@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "../../styles/forms.css"
 
 const RegisterForm = ({ onSubmit, loading, error }) => {
   const [userData, setUserData] = useState({
@@ -20,7 +21,7 @@ const RegisterForm = ({ onSubmit, loading, error }) => {
 
   return (
     <form onSubmit={handleSubmit} noValidate>
-      <div>
+      <div className="form-group">
         <label htmlFor="email">Email</label>
         <input
           id="email"
@@ -33,7 +34,7 @@ const RegisterForm = ({ onSubmit, loading, error }) => {
         />
       </div>
 
-      <div>
+      <div className="form-group">
         <label htmlFor="username">Nombre de usuario</label>
         <input
           id="username"
@@ -46,7 +47,7 @@ const RegisterForm = ({ onSubmit, loading, error }) => {
         />
       </div>
 
-      <div>
+      <div className="form-group">
         <label htmlFor="password">Contraseña</label>
         <input
           id="password"
@@ -61,7 +62,7 @@ const RegisterForm = ({ onSubmit, loading, error }) => {
 
       {error && <div className="error">{error}</div>}
 
-      <button type="submit" disabled={loading}>
+      <button type="submit" disabled={loading} className="btn modal-btn">
         {loading ? 'Registrando...' : 'Registrarse'}
       </button>
     </form>

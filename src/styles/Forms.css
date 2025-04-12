@@ -1,0 +1,56 @@
+.form-group {
+    margin-bottom: 15px;
+  }
+  
+  /* Etiqueta */
+  .form-group label {
+    display: block;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+    color: #333;
+  }
+  
+  /* Inputs */
+  .form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+  }
+  
+  /* Enfoque en inputs */
+  .form-group input:focus {
+    border-color: #4A90E2;
+    outline: none;
+  }
+  
+  /* Mensajes de error */
+  .error {
+    color: #e74c3c;
+    font-size: 0.9rem;
+    margin-top: 5px;
+    margin-bottom: 10px;
+  }
+  
+  /* Botón de envío de formularios */
+  .btn.modal-btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.2s, transform 0.2s;
+  }
+  
+  /* Botón primario (por defecto para Login) */
+  .btn.modal-btn.primary {
+    background: #4A90E2;
+    color: #fff;
+  }
+  
+  .btn.modal-btn:hover {
+    transform: translateY(-2px);
+  }
