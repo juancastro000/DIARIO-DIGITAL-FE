@@ -1,35 +1,11 @@
 import React, { useState } from "react";
 import LoginModal from "../../components/login/LoginModal.jsx";
 import RegisterModal from "../../components/register/RegisterModal.jsx";
-import { useLogin } from "../../hooks/UseLogin.jsx"
-import { useRegister } from "../../hooks/UseRegister.jsx"
-import { useAuth } from "../../contexts/AuthContexts";
-
 import "./HomePage.css";
 
 const HomePage = () => {
-  const { loginUser } = useAuth();
-  const { handleLogin, error: loginError, loading: loginLoading } = useLogin();
-  const { handleRegister, error: registerError, loading: registerLoading } = useRegister();
-
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showRegisterModal, setShowRegisterModal] = useState(false);
-
-  const handleLoginSubmit = async (credentials) => {
-    const userData = await handleLogin(credentials);
-    if (userData) {
-      loginUser(userData);
-      setShowLoginModal(false);
-    }
-  };
-
-  const handleRegisterSubmit = async (userData) => {
-    const registeredUser = await handleRegister(userData);
-    if (registeredUser) {
-      loginUser(registeredUser);
-      setShowRegisterModal(false);
-    }
-  };
 
   return (
     
@@ -59,20 +35,11 @@ const HomePage = () => {
       </main>
 
       {showLoginModal && (
-        <LoginModal
-          onSubmit={handleLoginSubmit}
-          error={loginError}
-          loading={loginLoading}
-          onClose={() => setShowLoginModal(false)}
-        />
+        <LoginModal onClose={() => setShowLoginModal(false)} />
       )}
+      
       {showRegisterModal && (
-        <RegisterModal
-          onSubmit={handleRegisterSubmit}
-          error={registerError}
-          loading={registerLoading}
-          onClose={() => setShowRegisterModal(false)}
-        />
+        <RegisterModal onClose={() => setShowRegisterModal(false)} />
       )}
     </div>
     </>

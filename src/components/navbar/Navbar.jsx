@@ -1,7 +1,11 @@
-import React from "react";
+import React, {useState} from "react";
 import "./Navbar.css";
+import LoginModal from "../login/LoginModal"; 
+import RegisterModal from "../register/RegisterModal";
 
-const Navbar = ({ onLoginClick, onRegisterClick }) => {
+const Navbar = () => {
+  const [activeModal, setActiveModal] = useState(null);
+
   return (
     <nav className="navbar">
       <div className="navbar-left">
@@ -15,9 +19,15 @@ const Navbar = ({ onLoginClick, onRegisterClick }) => {
         </ul>
       </div>
       <div className="navbar-right">
-        <button className="btn secondary" onClick={onLoginClick}>Iniciar Sesión</button>
-        <button className="btn primary" onClick={onRegisterClick}>Registrate</button>
+      <button className="btn secondary" onClick={() => setActiveModal("login")}>Iniciar Sesión</button>
+      <button className="btn primary" onClick={() => setActiveModal("register")}>Registrarse</button>
       </div>
+      {activeModal === "login" && (
+        <LoginModal onClose={() => setActiveModal(null)} />
+      )}
+      {activeModal === "register" && (
+        <RegisterModal onClose={() => setActiveModal(null)} />
+      )}
     </nav>
   );
 };
