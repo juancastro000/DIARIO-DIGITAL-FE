@@ -4,7 +4,7 @@ import RegisterModal from "../../components/register/RegisterModal.jsx";
 import { useLogin } from "../../hooks/UseLogin.jsx"
 import { useRegister } from "../../hooks/UseRegister.jsx"
 import { useAuth } from "../../contexts/AuthContexts";
-import Navbar from "../../components/navbar/Navbar";
+
 import "./HomePage.css";
 
 const HomePage = () => {
@@ -32,11 +32,9 @@ const HomePage = () => {
   };
 
   return (
+    
+    <>
     <div className="home-page">
-      <Navbar 
-        onLoginClick={() => setShowLoginModal(true)} 
-        onRegisterClick={() => setShowRegisterModal(true)}
-      />
       <main className="main-content">
         <section className="hero-section">
           <div className="hero-text">
@@ -77,6 +75,7 @@ const HomePage = () => {
         />
       )}
     </div>
+    </>
   );
 };
 
