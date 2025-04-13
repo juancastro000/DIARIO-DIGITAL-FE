@@ -1,7 +1,8 @@
 import React from 'react';
 import { AuthProvider } from './contexts/AuthContexts'; 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import HomePage from './pages/HomePage/HomePage';
+import HomePage from './pages/homepage/HomePage';
+import TimelinePage from './pages/TimelinePage/TimelinePage';
 import Navbar from "./components/navbar/Navbar";
 import Footer from './components/foteer/footer';
 import ProtectedRoute from './components/auth/ProtectedRoute';
@@ -16,10 +17,10 @@ function App() {
           <div className="main-content">
             <Routes>
               <Route path="/" element={<HomePage />} />
-              {/*<Route
+              <Route
                 path="/timeline"
                 element={<ProtectedRoute><TimelinePage /></ProtectedRoute>}
-              />*/}
+              />
             </Routes>
           </div>
           <Footer />
