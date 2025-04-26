@@ -1,20 +1,28 @@
 import React from "react";
 import "./DiaryEntryCard.css"
 
+const tagMapper = {
+  1: "Salud",
+  2: "Trabajo",
+  3: "Familia",
+  4: "Deporte",
+  5: "Entretenimiento"
+};
+
 const DiaryEntryCard = ({ entry }) => {
-  const { title, summary, date, tags } = entry;
+  const { content, date, mood, tagIds } = entry;
 
   return (
     <div className="diary-entry-card">
-      <h2>{title}</h2>
-      <p>{summary}</p>
+      <p className="entry-content">{content}</p>
       <p className="entry-date">{new Date(date).toLocaleDateString()}</p>
+      <p className="entry-mood">Estado de ánimo: {mood}</p>
       
-      {tags && tags.length > 0 && (
+      {tagIds && tagIds.length > 0 && (
         <div className="entry-tags">
-          {tags.map((tag) => (
-            <span key={tag} className="tag">
-              {tag}
+          {tagIds.map((tagId) => (
+            <span key={tagId} className="tag">
+              {tagMapper[tagId] || `Etiqueta ${tagId}`}
             </span>
           ))}
         </div>
