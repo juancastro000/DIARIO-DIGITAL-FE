@@ -16,3 +16,16 @@ export const getDiaryEntries = async (limit = 20) => {
     }
     return response.json();
   };
+
+  export const createEntry = async (entryData) => {
+    const response = await fetch(`${API_URL}/entry`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(entryData),
+    });
+    if (!response.ok) {
+      const { message } = await response.json();
+      throw new Error(message || 'Error creating entry');
+    }
+    return response.json();
+  };
