@@ -29,7 +29,7 @@ const HomePage = () => {
             </div>
           </div>
           <div className="hero-image">
-            <img src="/path/to/landing-illustration.png" alt="Escena de ejemplo" />
+            <img src="src\assets\image-demo.png" alt="Escena de ejemplo" />
           </div>
         </section>
       </main>
