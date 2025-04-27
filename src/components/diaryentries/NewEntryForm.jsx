@@ -1,13 +1,7 @@
 import React, { useState } from 'react';
 import './NewEntryForm.css';
+import { tagOptions } from '../../utils/Tags';
 
-const tagOptions = [
-  { id: 1, label: 'Salud' },
-  { id: 2, label: 'Trabajo' },
-  { id: 3, label: 'Familia' },
-  { id: 4, label: 'Deporte' },
-  { id: 5, label: 'Entretenimiento' },
-];
 const moodOptions = ['Feliz', 'Triste', 'Neutral', 'Emocionado', 'Ansioso'];
 const productivityOptions = ['Alta', 'Media', 'Baja'];
 

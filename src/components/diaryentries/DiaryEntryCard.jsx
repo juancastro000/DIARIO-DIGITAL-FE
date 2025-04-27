@@ -1,13 +1,6 @@
 import React from "react";
 import "./DiaryEntryCard.css"
-
-const tagMapper = {
-  1: "Salud",
-  2: "Trabajo",
-  3: "Familia",
-  4: "Deporte",
-  5: "Entretenimiento"
-};
+import { tagMapper } from "../../utils/Tags";
 
 const DiaryEntryCard = ({ entry, onEdit, onDelete }) => {
   const { id, content, date, mood, productivity, tagIds } = entry;
