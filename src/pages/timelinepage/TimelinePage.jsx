@@ -1,52 +1,48 @@
 import React, {useState, useEffect} from "react";
 import DiaryEntryCard from "../../components/diaryentries/DiaryEntryCard";
-import useDiaryEntries from "../../hooks/UseDiaryEntries";
+import useTimelineLogic from "../../hooks/useTimeline";
 import NewEntryForm from "../../components/diaryentries/NewEntryForm";
-import { createEntry } from "../../services/EntryService";
+import EditEntryForm from "../../components/diaryentries/EditEntryForm";
 import "./TimelinePage.css"
 
 const TimelinePage = () => {
-  const { entries, loading, error } = useDiaryEntries(20);
-  const [entryList, setEntryList] = useState([]);
-  const [showForm, setShowForm] = useState(false);
-
-  useEffect(() => {
-    setEntryList(entries);
-  }, [entries]);
-
-  const handleAddEntry = async (entryData) => {
-    try {
-      const newEntry = await createEntry(entryData);
-      setEntryList(prev => [newEntry, ...prev]);
-      setShowForm(false);
-    } catch (err) {
-      console.error(err);
-    }
-  };
+  const {
+    entries,
+    loading,
+    error,
+    showNewForm,
+    editingEntry,
+    handleAddEntry,
+    handleEditClick,
+    handleUpdateEntry,
+    handleDeleteEntry,
+    toggleNewForm,
+    cancelEditing
+  } = useTimelineLogic(20);
 
   return (
     <div className="timeline-page">
       <h1>Mi Línea de Tiempo</h1>
-      <button
-        className="btn primary new-entry-btn"
-        onClick={() => setShowForm(true)}
-      >
-        + Nueva Entrada
-      </button>
+      <div className="form-toggle-buttons">
+        <button className="btn primary" onClick={toggleNewForm}>
+          + Nueva Entrada
+        </button>
+      </div>
 
-      {showForm && (
-        <NewEntryForm
-          onSubmit={handleAddEntry}
-          onCancel={() => setShowForm(false)}
-        />
-      )}
+      {showNewForm && <NewEntryForm onSubmit={handleAddEntry} onCancel={toggleNewForm} />}
+      {editingEntry && <EditEntryForm initialData={editingEntry} onSubmit={handleUpdateEntry} onCancel={cancelEditing} />}
 
       {loading && <p>Cargando entradas...</p>}
       {error && <p className="error-message">{error}</p>}
 
       <div className="diary-entries-list">
-        {entryList.map(entry => (
-          <DiaryEntryCard key={entry.id} entry={entry} />
+        {entries.map(entry => (
+          <DiaryEntryCard
+            key={entry.id}
+            entry={entry}
+            onEdit={handleEditClick}
+            onDelete={handleDeleteEntry}
+          />
         ))}
       </div>
     </div>
