@@ -18,9 +18,13 @@ export const getDiaryEntries = async (limit = 20) => {
   };
 
   export const createEntry = async (entryData) => {
+    const token = Cookies.get('token');
     const response = await fetch(`${API_URL}/entry`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        "Content-Type": "application/json",
+        ...(token && { "Authorization": `Bearer ${token}` }),
+      },
       body: JSON.stringify(entryData),
     });
     if (!response.ok) {
