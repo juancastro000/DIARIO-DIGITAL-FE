@@ -1,0 +1,26 @@
+.entry-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .entry-filters select,
+  .entry-filters input[type="date"] {
+    padding: 6px;
+    border-radius: 4px;
+  }
+  .tags-select {
+    display: flex;
+    gap: 5px;
+  }
+  .tags-select label {
+    cursor: pointer;
+    padding: 4px 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  .tags-select label.selected {
+    background: #4A90E2;
+    color: #fff;
+    border-color: #4A90E2;
+  }

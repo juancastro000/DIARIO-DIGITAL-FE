@@ -1,52 +1,49 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 import DiaryEntryCard from "../../components/diaryentries/DiaryEntryCard";
 import useTimelineLogic from "../../hooks/useTimeline";
 import NewEntryForm from "../../components/diaryentries/NewEntryForm";
 import EditEntryForm from "../../components/diaryentries/EditEntryForm";
+import useEntryFilters from "../../hooks/useEntryFilters";
+import EntryFilters from "../../components/diaryentries/EntryFilters";
+import useDiaryEntries from "../../hooks/UseDiaryEntries";
+import { moodOptions, productivityOptions } from '../../utils/constants';
+import { tagOptions } from "../../utils/Tags"; 
 import "./TimelinePage.css"
 
 const TimelinePage = () => {
-  const {
-    entries,
-    loading,
-    error,
-    showNewForm,
-    editingEntry,
-    handleAddEntry,
-    handleEditClick,
-    handleUpdateEntry,
-    handleDeleteEntry,
-    toggleNewForm,
-    cancelEditing
-  } = useTimelineLogic(20);
+  const { entries: raw, loading, error } = useDiaryEntries(20);
+  const timeline = useTimelineLogic();
+  const { filters, handleChange, clearFilters, filtered } = useEntryFilters(raw);
 
   return (
     <div className="timeline-page">
       <h1>Mi Línea de Tiempo</h1>
-      <div className="form-toggle-buttons">
-        <button className="btn primary" onClick={toggleNewForm}>
-          + Nueva Entrada
-        </button>
-      </div>
 
-      {showNewForm && <NewEntryForm onSubmit={handleAddEntry} onCancel={toggleNewForm} />}
-      {editingEntry && <EditEntryForm initialData={editingEntry} onSubmit={handleUpdateEntry} onCancel={cancelEditing} />}
+      <EntryFilters
+        filters={filters}
+        onChange={handleChange}
+        onClear={clearFilters}
+        options={{ moodOptions, productivityOptions, tagOptions }}
+      />
 
-      {loading && <p>Cargando entradas...</p>}
+      <button className="btn primary" onClick={timeline.toggleNew}>+ Nueva Entrada</button>
+      {timeline.showNewForm && <NewEntryForm onSubmit={timeline.handleAdd} onCancel={timeline.toggleNew} />}
+      {timeline.editingEntry && <EditEntryForm initialData={timeline.editingEntry} onSubmit={timeline.handleUpdate} onCancel={timeline.cancelEdit} />}
+
+      {loading && <p>Cargando...</p>}
       {error && <p className="error-message">{error}</p>}
 
       <div className="diary-entries-list">
-        {entries.map(entry => (
+        {filtered.map(e => (
           <DiaryEntryCard
-            key={entry.id}
-            entry={entry}
-            onEdit={handleEditClick}
-            onDelete={handleDeleteEntry}
+            key={e.id}
+            entry={e}
+            onEdit={timeline.handleEditClick}
+            onDelete={timeline.handleDelete}
           />
         ))}
       </div>
     </div>
   );
 };
-
 export default TimelinePage;

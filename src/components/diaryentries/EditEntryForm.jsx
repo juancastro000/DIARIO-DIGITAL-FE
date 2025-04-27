@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import './NewEntryForm.css'; 
 import { tagOptions } from '../../utils/Tags';
-
-const moodOptions = ['Feliz', 'Triste', 'Neutral', 'Emocionado', 'Ansioso'];
-const productivityOptions = ['Alta', 'Media', 'Baja'];
+import { moodOptions, productivityOptions } from '../../utils/constants'; 
 
 const EditEntryForm = ({ initialData, onSubmit, onCancel }) => {
   const [content, setContent] = useState(initialData.content);
