@@ -22,7 +22,9 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-left">
-        <h1 className="logo">Diario Digital</h1>
+      <Link to="/" className="logo">
+        <h1>Diario Digital</h1>
+      </Link>
       </div>
 
       <div className={`hamburger ${mobileOpen ? "open" : ""}`} onClick={toggleMobileMenu}>
