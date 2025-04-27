@@ -1,22 +1,27 @@
-import { useState } from "react";
-import { register } from "../services/AuthService";
+import { useState } from 'react';
+import { register, login} from '../services/AuthService.js';
 
 export const useRegister = () => {
-  const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const handleRegister = async (userData) => {
+    setLoading(true);
+    setError(null);
     try {
-      setError(null);
-      setLoading(true);
-      const registeredUser = await register(userData);
-      return registeredUser;
-    } catch (error) {
-      setError(error.message || 'Error al registrarse');
+      await register(userData);
+      const loginResponse = await login({
+        username: userData.username,
+        password: userData.password 
+      });
+      return loginResponse;
+    } catch (err) {
+      setError(err.message);
+      return null;
     } finally {
       setLoading(false);
     }
   };
 
-  return { handleRegister, error, loading };
-};
+  return { handleRegister, loading, error };
+}
