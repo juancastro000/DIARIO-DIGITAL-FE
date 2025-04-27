@@ -1,0 +1,65 @@
+.diary-entry-card {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  font-family: 'Roboto', sans-serif;
+}
+
+.entry-content {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.entry-date,
+.entry-mood {
+  font-size: 0.9rem;
+  color: #777;
+  margin-bottom: 10px;
+}
+
+.entry-tags {
+  margin-bottom: 15px;
+}
+
+.tag {
+  display: inline-block;
+  background: #4A90E2;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+.card-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.card-actions .btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.2s;
+  font-size: 0.9rem;
+}
+
+.edit-btn {
+  background: #4A90E2;
+  color: #fff;
+}
+
+.delete-btn {
+  background: #e74c3c;
+  color: #fff;
+}
+
+.card-actions .btn:hover {
+  transform: translateY(-2px);
+}

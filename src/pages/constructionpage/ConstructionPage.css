@@ -1,0 +1,29 @@
+.construction-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 60px); 
+    background: #f5f5f5;
+    padding-top: 60px;
+  }
+  
+  .construction-container {
+    text-align: center;
+    background: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  
+  .construction-container h1 {
+    font-size: 2rem;
+    color: #4A90E2;
+    margin-bottom: 16px;
+  }
+  
+  .construction-container p {
+    font-size: 1rem;
+    color: #333;
+    margin: 8px 0;
+  }
+  

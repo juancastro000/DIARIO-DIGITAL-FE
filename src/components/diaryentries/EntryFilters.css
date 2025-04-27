@@ -1,0 +1,100 @@
+.entry-filters-modern {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  min-width: 150px;
+}
+.filter-group label {
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: #333;
+}
+.filter-group select,
+.filter-group input[type="date"] {
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+.date-range {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.date-sep {
+  font-size: 1.2rem;
+  color: #666;
+}
+.tags-group {
+  position: relative;
+}
+.dropdown-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #fff;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+.chevron {
+  margin-left: 8px;
+  transition: transform 0.3s;
+}
+.chevron.open {
+  transform: rotate(180deg);
+}
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  padding: 10px;
+  z-index: 10;
+  min-width: 160px;
+}
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.dropdown-item:hover {
+  background: #f0f0f0;
+}
+.filter-actions {
+  display: flex;
+  align-items: flex-end;
+}
+.clear-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  font-size: 0.9rem;
+  border: none;
+  background: #eee;
+  color: #333;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.clear-btn:hover {
+  background: #ddd;
+}
