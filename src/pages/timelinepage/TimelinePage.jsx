@@ -12,7 +12,20 @@ import "./TimelinePage.css"
 
 const TimelinePage = () => {
   const { entries: raw, loading, error } = useDiaryEntries(20);
-  const timeline = useTimelineLogic();
+  const {
+    entries,
+    loading: timelineLoading,
+    error: timelineError,
+    showNewForm,
+    editingEntry,
+    handleAddEntry,
+    handleEditClick,
+    handleUpdateEntry,
+    handleDeleteEntry,
+    toggleNewForm,
+    cancelEditing
+  } = useTimelineLogic();
+
   const { filters, handleChange, clearFilters, filtered } = useEntryFilters(raw);
 
   return (
@@ -26,24 +39,42 @@ const TimelinePage = () => {
         options={{ moodOptions, productivityOptions, tagOptions }}
       />
 
-      <button className="btn primary" onClick={timeline.toggleNew}>+ Nueva Entrada</button>
-      {timeline.showNewForm && <NewEntryForm onSubmit={timeline.handleAdd} onCancel={timeline.toggleNew} />}
-      {timeline.editingEntry && <EditEntryForm initialData={timeline.editingEntry} onSubmit={timeline.handleUpdate} onCancel={timeline.cancelEdit} />}
+      <button className="btn primary" onClick={toggleNewForm}>
+        + Nueva Entrada
+      </button>
 
-      {loading && <p>Cargando...</p>}
-      {error && <p className="error-message">{error}</p>}
+      {showNewForm && (
+        <NewEntryForm
+          onSubmit={handleAddEntry}
+          onCancel={toggleNewForm}
+        />
+      )}
+
+      {editingEntry && (
+        <EditEntryForm
+          initialData={editingEntry}
+          onSubmit={handleUpdateEntry}
+          onCancel={cancelEditing}
+        />
+      )}
+
+      {(loading || timelineLoading) && <p>Cargando...</p>}
+      {(error || timelineError) && (
+        <p className="error-message">{error || timelineError}</p>
+      )}
 
       <div className="diary-entries-list">
-        {filtered.map(e => (
+        {filtered.map((e) => (
           <DiaryEntryCard
             key={e.id}
             entry={e}
-            onEdit={timeline.handleEditClick}
-            onDelete={timeline.handleDelete}
+            onEdit={handleEditClick}
+            onDelete={handleDeleteEntry}
           />
         ))}
       </div>
     </div>
   );
 };
+
 export default TimelinePage;
