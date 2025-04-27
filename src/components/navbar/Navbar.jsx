@@ -14,7 +14,6 @@ const Navbar = () => {
     setMobileOpen(!mobileOpen);
   };
 
-  // Cerrar menú móvil al navegar o al abrir un modal
   const handleNavClick = (action) => {
     setMobileOpen(false);
     if (action) action();
@@ -26,14 +25,12 @@ const Navbar = () => {
         <h1 className="logo">Diario Digital</h1>
       </div>
 
-      {/* Hamburger icon */}
       <div className={`hamburger ${mobileOpen ? "open" : ""}`} onClick={toggleMobileMenu}>
         <span className="bar"></span>
         <span className="bar"></span>
         <span className="bar"></span>
       </div>
 
-      {/* Menú desktop */}
       <div className="navbar-center">
         {user && (
           <ul className="nav-links">
@@ -43,7 +40,7 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <Link to="/tasks" onClick={() => handleNavClick()}>
+              <Link to="/inconstruction" onClick={() => handleNavClick()}>
                 Tareas
               </Link>
             </li>
@@ -74,7 +71,6 @@ const Navbar = () => {
         ) : null}
       </div>
 
-      {/* Menú mobile */}
       <div className={`mobile-menu ${mobileOpen ? "open" : ""}`}>
         {user ? (
           <ul className="nav-links-mobile">

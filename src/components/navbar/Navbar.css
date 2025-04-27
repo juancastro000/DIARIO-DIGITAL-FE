@@ -1,4 +1,4 @@
-/* Base styles */
+
 .navbar {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -76,7 +76,7 @@
   transform: translateY(-2px);
 }
 
-/* Hamburger icon (hidden en desktop) */
+
 .hamburger {
   display: none;
   flex-direction: column;
@@ -92,7 +92,7 @@
   transition: all 0.3s ease;
 }
 
-/* Transformación al abrir */
+
 .hamburger.open .bar:nth-child(1) {
   transform: translateY(7.5px) rotate(45deg);
 }
@@ -103,29 +103,29 @@
   transform: translateY(-7.5px) rotate(-45deg);
 }
 
-/* Menú mobile (oculto por defecto) */
+
 .mobile-menu {
   display: none;
 }
 
-/* --- Media Queries para móvil --- */
+
 @media (max-width: 768px) {
-  /* Oculta el menú desktop */
+ 
   .navbar-center,
   .navbar-right {
     display: none;
   }
 
-  /* Muestra el hamburger */
+ 
   .hamburger {
     display: flex;
   }
 
-  /* Mobile menu desplegable */
+  
   .mobile-menu.open {
     display: flex;
     position: absolute;
-    top: 60px; /* ajusta según el padding de tu navbar */
+    top: 60px; 
     left: 0; right: 0;
     background: #fff;
     flex-direction: column;

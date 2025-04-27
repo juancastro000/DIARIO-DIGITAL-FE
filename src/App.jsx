@@ -3,6 +3,7 @@ import { AuthProvider } from './contexts/AuthContexts';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from './pages/homepage/HomePage';
 import TimelinePage from './pages/TimelinePage/TimelinePage';
+import ConstructionPage from './pages/constructionpage/ConstructionPage';
 import Navbar from "./components/navbar/Navbar";
 import Footer from './components/foteer/footer';
 import ProtectedRoute from './components/auth/ProtectedRoute';
@@ -20,6 +21,10 @@ function App() {
               <Route
                 path="/timeline"
                 element={<ProtectedRoute><TimelinePage /></ProtectedRoute>}
+              />
+              <Route
+                path="/inconstruction"
+                element={<ProtectedRoute><ConstructionPage /></ProtectedRoute>}
               />
             </Routes>
           </div>
