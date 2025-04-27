@@ -8,6 +8,7 @@ import Navbar from "./components/navbar/Navbar";
 import Footer from './components/foteer/footer';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import "./App.css"
+import StatisticsPage from './pages/statisticspage/StatisticsPage';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
                 path="/inconstruction"
                 element={<ProtectedRoute><ConstructionPage /></ProtectedRoute>}
               />
+              <Route path="/statistics" element={<ProtectedRoute><StatisticsPage /></ProtectedRoute>} />
             </Routes>
           </div>
           <Footer />
